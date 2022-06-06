@@ -1,5 +1,6 @@
 # Docker 
-![alt text](.docker.png)
+
+![Docker](.docker.png)
 
 ## Tabla de contenidos
 - [Instalacion de Docker en Arch Linux](#instalacion-de-Docker-en-arch-linux)
