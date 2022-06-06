@@ -248,5 +248,5 @@ Modificamos el fichero de configuracion de mysql para permitir aceso al usuario 
 nano /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 ```
-#bind-address = 127.0.0.1
+#bind-address = 127.0.0.1  
 ```
