@@ -245,8 +245,8 @@ apt install phpmyadmin
 ```
 Modificamos el fichero de configuracion de mysql para permitir aceso al usuario remoto
 ```
-nano /etc/mysql/mysql.conf.d/mysqld.cnf
+nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 ```
-#bind-address = 127.0.0.1  
+# bind-address = 127.0.0.1  
 ```
