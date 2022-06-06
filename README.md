@@ -10,8 +10,7 @@
   - [Generar imagenes](#generar-imagenes)
 - [Contenedor SSH](#contenedor-ssh)
 - [Contenedor Apache](#contenedor-apache)
-- [Contenedor Mysql](#contenedor-mysql)
-
+- [Contenedor Mariadb](#contenedor-mariadb)
  
 # Instalacion de Docker en Arch Llnux
 Habilitamos el modulo loop
@@ -126,7 +125,7 @@ docker push jose016al/ubuntu
 # Contenedor SSH
 Lanzamos un contenedor de ubuntu, con el puerto 22 para poder comunicarnos 
 ```bash
-docker run -it --name server -p 2222:22 ubuntu   
+docker run --name server -it-p 2222:22 ubuntu
 ```
 Actualizamos el contenedor 
 ```bash
@@ -166,7 +165,7 @@ service ssh restart
 # Contenedor Apache
 Partimos del contenedor anterior, esta vez con persistencia y abriendo los puertos 22 y 80
 ```bash
-docker run --name server -it -p 2222:22 -p 8080:80 --mount type=bind,src=/home/jose/github/Docker/Web,dst=/var/www/html jose016al/ssh
+docker run --name server -it -v ~/github/Docker/Web:/var/www/html -p 2222:22 -p 8080:80 jose016al/ssh
 ```
 Actualizar el contenedor 
 ```bash
@@ -190,9 +189,9 @@ service ssh restart
 service apache2 restart
 ```
 
-# Contenedor Mysql
-Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80 y 3306
-**(Hay que tener en cuenta que mysql entre en conflicto se hacemos la persistencia en un repositorio o en onedrive)**
+# Contenedor Mariadb
+Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80 y 3306  
+_(Hay que tener en cuenta que mysql entre en conflicto se hacemos la persistencia en un repositorio o en onedrive)_
 ```bash
 docker run --name server -it -v ~/github/Docker/Web:/var/www/html -v ~/.BD:/var/lib/mysql -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache2
 ```
@@ -211,9 +210,15 @@ apt install dialog
 apt install apt-utils
 ```
 ```bash
-apt install mysql-server
+apt install mariadb-server
 ```
-Inicializamos el directorio raiz y reiniciamos el servicio
+Configuramos la seguridad
+```bash
+mysql_secure_installation
+```
+> ENTER, N, Y, Y. Y Y
+
+Inicializamos el directorio raiz y reiniciamos el servicio, si fuese neceario
 ```bash
 usermod -d /var/lib/mysql/ mysql
 ```
@@ -222,20 +227,14 @@ service mysql restart
 ```
 Creamos un usuario admin y uno remoto
 ```bash
-CREATE USER 'admin'@'localhost' IDENTIFIED BY '211099';
-```
-```bash
-GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
+GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY '211099' WITH GRANT OPTION;
 ```
 ```bash
 FLUSH PRIVILEGES;
 ```
 Creamos el usuario remoto
 ```bash
-CREATE USER 'jose'@'%' IDENTIFIED BY '211099';
-```
-```bash
-GRANT ALL PRIVILEGES ON * . * TO 'jose'@'%';
+GRANT ALL ON *.* TO 'jose'@'%' IDENTIFIED BY '211099' WITH GRANT OPTION;
 ```
 ```bash
 FLUSH PRIVILEGES;
