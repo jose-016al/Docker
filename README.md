@@ -1,4 +1,5 @@
 # Docker   
+![alt text][ ]
 
 ## Tabla de contenidos
 - [Instalacion de Docker en Arch Linux](#instalacion-de-Docker-en-arch-linux)
@@ -192,8 +193,9 @@ service apache2 restart
 
 # Contenedor Mysql
 Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80 y 3306
+**(Hay que tener en cuenta que mysql entre en conflicto se hacemos la persistencia en un repositorio o en onedrive)**
 ```bash
-docker run --name server -it -p 2222:22 -p 8080:80 -p 3306:3306 --mount type=bind,src=/home/jose/github/Docker/Web,dst=/var/www/html --mount type=bind,src=/home/jose/github/Docker/BD,dst=/var/lib/mysql jose016al/apache2
+docker run --name server -it -v ~/github/Docker/Web:/var/www/html -v ~/.BD:/var/lib/mysql -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache2
 ```
 Actualizar el contenedor
 ```bash
