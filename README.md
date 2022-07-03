@@ -193,7 +193,7 @@ service apache2 restart
 Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80 y 3306  
 _(Hay que tener en cuenta que mysql entre en conflicto se hacemos la persistencia en un repositorio o en onedrive)_
 ```bash
-docker run --name server -it -v ~/github/Docker/Web:/var/www/html -v ~/.BD:/var/lib/mysql -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache2
+docker run --name server -it -v ~/github/Docker/Web:/var/www/html -v ~/.BD:/var/lib/mysql -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache
 ```
 Actualizar el contenedor
 ```bash
@@ -212,18 +212,21 @@ apt install apt-utils
 ```bash
 apt install mariadb-server
 ```
+```bash
+service mariadb restart
+```
 Configuramos la seguridad
 ```bash
 mysql_secure_installation
 ```
-> ENTER, N, Y, Y. Y Y
+> ENTER, Y, N, Y, Y. Y Y
 
 Inicializamos el directorio raiz y reiniciamos el servicio, si fuese neceario
 ```bash
 usermod -d /var/lib/mysql/ mysql
 ```
 ```bash
-service mysql restart
+service mariadb restart
 ```
 Creamos un usuario admin y uno remoto
 ```bash
