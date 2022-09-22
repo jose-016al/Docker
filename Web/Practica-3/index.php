@@ -79,15 +79,14 @@
                         $q = "SELECT * FROM blog";
                         $results = $bd -> query($q);
 
-                        
                         while ($datos = $results -> fetch_assoc()) {
-                            echo '<h2>'. $datos['titulo'] .'</h2> <br>';
-                            echo $datos['contenido'] . '<br>';
+                            echo '<div id="padre"><h2>'. $datos['titulo'] .'</h2> <br>';
+                            echo '<p>'.$datos['contenido'] . '</p><br>';
                             $datos['imagen'] = "img/foto1.jpg";
                             $datos['imagen'] = $galeria[1];
                             echo '<img src=" ' . $datos['imagen'] . ' " width ="50%">';            
-                            echo $datos['fecha'] . '<br>';
-                            echo $datos['autor'] . '<br>';
+                            echo '<div id="fecha"><p> Autor: '.$datos['autor'] . '</p>';
+                            echo '<p> Fecha: '.$datos['fecha'] . '</p></div>';
                         }
                         break;
                 }

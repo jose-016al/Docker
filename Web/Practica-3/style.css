@@ -28,8 +28,19 @@ nav ul li a:hover {
 section {
     padding: 10px;
 }
-h2 {
-    width: 80%;
-    background-color: red;
+#padre {
+    width: 70%;
     margin: 0 auto;
+}
+#padre img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+#padre p {
+    margin-top: 10px;
+}
+#padre #fecha {
+    display: flex;
+    justify-content: space-between;
 }
