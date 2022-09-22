@@ -7,7 +7,7 @@ header {
     justify-content: space-between;
 }
 nav {
-    width: 25%;
+    width: 30%;
 }
 nav ul {
     list-style: none;
@@ -27,4 +27,9 @@ nav ul li a:hover {
 }
 section {
     padding: 10px;
+}
+h2 {
+    width: 80%;
+    background-color: red;
+    margin: 0 auto;
 }

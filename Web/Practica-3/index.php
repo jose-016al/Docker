@@ -8,7 +8,8 @@
         $menu = [
             "./?seccion=inicio" => "Inicio",
             "./?seccion=galeria" => "Galeria",
-            "./?seccion=contacto" => "Contacto" 
+            "./?seccion=contacto" => "Contacto",
+            "./?seccion=blog" => "Blog"
         ];
         $galeria = [
             "./img/foto1.jpg",
@@ -29,8 +30,8 @@
             <nav>
                 <?php
                 echo '<ul>';
-                    foreach ($menu as $valor => $clave) {
-                        echo '<li class=enlaces><a href=' . $valor . '>' . $clave .  '</a></li>';
+                    foreach ($menu as $indice => $valor) {
+                        echo '<li class=enlaces><a href=' . $indice . '>' . $valor .  '</a></li>';
                     }
                 echo '</ul>';
                 ?>
@@ -70,6 +71,24 @@
                             <input type="email">
                         </form>
                         ';
+                        break;
+                    case "blog":
+                        require_once("db.php");
+                        $bd = Conectar::conexion();
+
+                        $q = "SELECT * FROM blog";
+                        $results = $bd -> query($q);
+
+                        
+                        while ($datos = $results -> fetch_assoc()) {
+                            echo '<h2>'. $datos['titulo'] .'</h2> <br>';
+                            echo $datos['contenido'] . '<br>';
+                            $datos['imagen'] = "img/foto1.jpg";
+                            $datos['imagen'] = $galeria[1];
+                            echo '<img src=" ' . $datos['imagen'] . ' " width ="50%">';            
+                            echo $datos['fecha'] . '<br>';
+                            echo $datos['autor'] . '<br>';
+                        }
                         break;
                 }
             } else {
