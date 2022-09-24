@@ -1,46 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Practica 4</h1>
+    <head>
+        <title>Practica 4</title>
+        <link rel="stylesheet" href="style.css">
+        <?php
+        $_GET["seccion"];
+        $menu = [
+            "./?seccion=login" => "Login",
+            "./?seccion=signIn" => "Sign in"
+        ];
+        ?>
+    </head>
+    <body>
+        <header>
+            <h1>Practica 4</h1>
+            <nav>
+                <?php
+                echo '<ul>';
+                    foreach ($menu as $indice => $valor) {
+                        echo '<li class=enlaces><a href=' . $indice . '>' . $valor .  '</a></li>';
+                    }
+                echo '</ul>';
+                ?>
+            </nav>
+        </header>    
+        <section>
+            <?php
+                switch ($_GET['seccion']) {
+                    case 'signIn':
+                        echo '<div id="formulario"><h2>Sign in</h2><form method="POST" action="./?seccion=signIn">
+                            <label>Nombre: </label>
+                            <input type="text" name="name">
+                            <label>Contraseña: </label>
+                            <input type="text" name="password">
+                            <input type="submit" value="Registrarse">
+                        </form></div>';
+                        // ---------SIGN IN---------
+                        $new_name = $_POST['name'];
+                        $new_password = $_POST['password'];
 
-    <?php
-        $username = $_POST['username'];
-        $passw = $_POST['password'];
+                        require_once("db.php");
+                        $bd = Conectar::conexion();
 
-        require_once("db.php");
-        $bd = Conectar::conexion();
+                        $q = "SELECT * FROM users WHERE name ='".$new_name."' AND password ='".$new_password."'";
+                        $results = $bd -> query($q);
+                        $datos = $results -> fetch_assoc();
 
-        $q = "SELECT * FROM usuarios WHERE nombre = $_POST['username'] == $username";
-        $results = $bd -> query($q);
+                        if (isset($new_name) && isset($new_password)) {
+                            if ($new_name == $datos['name']) {
+                                echo '<h2>El usuario ya existe</h2>';
+                            } else if ($new_name == null || $new_password == null) {
+                                echo '<h2>Has dejado algun campo vacio</h2>';
+                            } else {
+                                echo '<h2>Se ha creado el usuario correctamente</h2>';
+                                $q = "INSERT INTO users(name, password) VALUES('".$new_name."','".$new_password."')";
+                                $results = $bd -> query($q);
+                            }
+                        } 
+                        break;
+                    default:
+                        echo '<div id="formulario"><h2>Login</h2><form method="POST" action="./?seccion=login">
+                            <label>Nombre: </label>
+                            <input type="text" name="name">
+                            <label>Contraseña: </label>
+                            <input type="text" name="password">
+                            <input type="submit" value="Iniciar sesion">
+                        </form></div>';
+                        // ---------LOGIN---------
+                        $name = $_POST['name'];
+                        $password = $_POST['password'];
 
+                        require_once("db.php");
+                        $bd = Conectar::conexion();
 
-        echo '<form method="POST" action="index.php">
-                <label>usuarios</label>
-                <input type="text" name="username">
-                <label>Contraseña</label>
-                <input type="text" name="passwordq">
-                <input type="submit" name="login">
-            </form>';
+                        $q = "SELECT * FROM users WHERE name ='".$name."' AND password ='".$password."'";
+                        $results = $bd -> query($q);
+                        $datos = $results -> fetch_assoc();
 
-
-    ?>
-
-    <?php
-        $_GET['u'];
-        $_GET['c'];
-        $usuario = 'jose';
-        $password = '1234';
-        if (isset($_GET['u']) && $_GET['c']) {
-            if ($_GET['u'] == $usuario && $_GET['c'] == $password) {
-                echo '<h1>Login correcto</h1>';
-            }
-        }
-    ?>
-</body>
+                        if (isset($name) && isset($password)) {
+                            if ($name == null || $password == null) {
+                                echo '<h2>Has dejado algun campo vacio</h2>';
+                            } else if ($name == $datos['name'] && $password == $datos['password']) {
+                                echo '<h2>Login correcto</h2>';
+                            } else {
+                                echo '<h2>Usuario o contraseña incorrectas</h2>';
+                            }
+                        }  
+                        break;
+                }
+            ?>
+        </section>
+    </body>
 </html>
