@@ -5,15 +5,15 @@
         <link rel="stylesheet" href="style.css">
         <?php
         session_start(); 
-        $_SESSION['sesion'];
+        $_SESSION['loged'];
         // Comprobacion de la base de datos
         require_once("db.php");
         $bd = Conectar::conexion();
         // if ($bd) echo "conectado";
         $q = "SELECT * FROM users;";
         $result = $bd -> query($q);
-        if (isset($_SESSION['sesion'])) {
-            echo "Estas usando la cuenta de: ".$_SESSION["sesion"]; 
+        if (isset($_SESSION['loged'])) {
+            echo "Estas usando la cuenta de: ".$_SESSION["loged"]; 
         }
         
         $_GET["seccion"];
@@ -135,7 +135,7 @@
                             <input type="text" name="name">
                             <label>Contraseña: </label>
                             <input type="password" name="password">
-                            <input type="submit" value="Iniciar sesion">
+                            <input type="submit" value="Iniciar sesion" name="login">
                         </form></div>';
                         // ---------LOGIN---------
                         $name = $_POST['name'];
@@ -150,7 +150,9 @@
                                 echo '<h2>Has dejado algun campo vacio</h2>';
                             } else if ($name == $datos['name'] && $password == $datos['password']) {
                                 echo '<h2>Login correcto</h2>';
-                                $_SESSION["sesion"] = $datos['name']; 
+                                $datos['image'] = "./img/foto1,jpg";
+                                $_SESSION['logged'] = $datos['image'];
+                                $_SESSION["logged"] = $datos['name']; 
                             } else {
                                 echo '<h2>Usuario o contraseña incorrectas</h2>';
                             }
@@ -158,7 +160,7 @@
                         break;
                     case "logout":
                         session_unset();
-                        header(Location:index.php);
+                        header('location:index.php');
                         break;
                 }
             } else {

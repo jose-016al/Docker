@@ -42,7 +42,7 @@
                         require_once("db.php");
                         $bd = Conectar::conexion();
 
-                        $q = "SELECT * FROM users WHERE name ='".$new_name."' AND password ='".$new_password."'";
+                        $q = "SELECT * FROM users WHERE name = ' . $new_name. '";
                         $results = $bd -> query($q);
                         $datos = $results -> fetch_assoc();
 
