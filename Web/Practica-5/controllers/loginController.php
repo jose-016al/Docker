@@ -1,9 +1,10 @@
 <?php
-echo 'hola';
+echo 'HOLA';
+
 if (isset($_POST['logeo'])) {
     if ($_POST['user'] && $_POST['password']) {
         $db = Conectar::conexion();
-        $result = $db -> query = ('SELECT * FROM users WHERE name =' . $_POST['user']);
+        $result = $db -> query = ('SELECT * FROM users WHERE name ="' . $_POST['user'] . '"');
         if ($datos = $result -> fetch_assoc()) {
             if ($datos['password'] == $_POST['password']) {
                 $_SESSION['user'] = new User($datos);
