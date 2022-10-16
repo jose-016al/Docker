@@ -6,7 +6,7 @@ class User{
 
     public function __construct ($datos){
         $this->id = $datos['id'];
-        $this->name = $datos['user'];
+        $this->name = $datos['username'];
         
     }
 
