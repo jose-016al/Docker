@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">ç
+        <link rel="stylesheet" href="views/style.css" type="text/css">
+    </head>
+    <body>
+        <header>
+			<h1>Blog</h1>
+			<nav>
+				<ul>
+					<li><a href="index.php">Inicio</a></li>
+					<?php
+					if($_SESSION['user'] -> getName()=="")
+						echo '<li><a href="index.php?login">Login</a></li>';
+					else 
+						// echo 'Hola '.$_SESSION['user']->getName().' 
+						echo '<li><a href="index.php?login&logout">Salir</a></li>'.'
+						<li><a href="index.php?añadir">Añadir</a></li>';
+					?>
+				</ul>
+			</nav>
+		</header>
+        <section>
+        <h1 align="center">Añadir articulo</h1>
+
+        <form action="index.php?añadir" method="post">
+            <input type="text" name="title" placeholder="Titulo para articulo">
+            <input type="text" name="contenido" placeholder="contenido">
+            <input type="text" name="imagen" placeholder="imagen">
+            <input type="text" name="fecha" placeholder="fecha">
+            <input type="text" name="autor" placeholder="autor">
+            <input type="submit" value="Añadir">
+        </form>
+        </section>
+    </body>
+</html>

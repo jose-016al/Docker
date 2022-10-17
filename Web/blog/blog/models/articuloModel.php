@@ -12,7 +12,7 @@ class Articulo{
         $this->id = $datos['id'];
         $this->title= $datos['title'];
         $this->fecha= $datos['fecha'];
-        $this->idUser= $datos['idUser'];
+        $this->idUser= $datos['id_user'];
 
     }
 

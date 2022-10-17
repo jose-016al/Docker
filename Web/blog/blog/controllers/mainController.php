@@ -10,7 +10,7 @@ session_start();
 
 if(!isset($_SESSION['user'])){
     $datos['id']=0;
-    $datos['username']="";
+    $datos['user']="";
     $_SESSION['user'] = new User($datos);
 }
 
@@ -40,13 +40,6 @@ if(isset($_GET['añadir'])) {
     require_once('controllers/añadirController.php');
     die();
 }
-
-
-
-
-
-
-
 
 // cargar la vista
 require_once("views/mainView.phtml");

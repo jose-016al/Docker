@@ -18,7 +18,7 @@ class PeliRepository{
         $peliculas = [];
         
         $db=Conectar::conexion();
-        $result = $db->query("SELECT * FROM films WHERE title='".$b."'");
+        $result = $db->query("SELECT * FROM films WHERE title='".$db."'");
         
         while($datos = $result -> fetch_assoc()) {
             $peliculas[] = new Peli($datos);
@@ -30,7 +30,7 @@ class PeliRepository{
         $peliculas = [];
         
         $db=Conectar::conexion();
-        $result = $db->query("INSERT INTO films (`id`, `title`) VALUES (NULL, '".$titulo."');");
+        $result = $db->query("INSERT INTO films (`id`, `title`) VALUES (NULL, '".$title."');");
         
         while($datos = $result -> fetch_assoc()) {
             $peliculas[] = new Peli($datos);
