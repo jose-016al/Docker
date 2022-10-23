@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    /* background-color: #1b1e24; */
+}
+
+/* ----------HEADER Y MENU---------- */
+
+header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    width: 50%;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+} 
+nav ul li a {
+    display: block;
+    float: left;
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+}
+nav ul li a:hover {
+    background-color: black;
+    color: white;
+}
+
+section {
+    padding: 10px;
+}
+h1, h2 {
+    text-align: center;
+}
+
+/* ----------ARTICULOS Y COMENTARIOS---------- */
+
+#blog {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#articulo {
+    border: solid 1px grey;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+#articulo img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    
+}
+#articulo p {
+    margin-top: 10px;
+}
+#articulo #fecha {
+    margin-bottom: 20px;
+    
+}
+
+#comentarios {
+    
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#formComentar {
+    border: solid 1px grey;
+    width: 60%;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 200px;
+}
+#formComentar textarea {
+    resize: none;
+    width: 100%;
+    height: 50px;
+}
+
+/* ----------AÑADIR ARTICULOS---------- */
+
+#addArticulo {
+    width: 40%;
+    margin: 0 auto;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* ----------PANEL DE ADMINISTRACION---------- */
+
+#adminPanel {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#usuariosNormales {
+    width: 25%;
+}
+
+#usuariosAdmin {
+    width: 25%;
+}
