@@ -12,7 +12,9 @@ if (isset($_POST['añadir'])) {
 
     ArticuloRepository::addArticulo($_POST['title'],$_POST['contenido'],$imagen);
     header("location:index.php");
-}
+
+    
+} 
 
 require_once("views/registroView.phtml");
 die();

@@ -8,11 +8,18 @@
     <link rel="stylesheet" href="views/css/style.css">
 </head>
 <body>
-    <header>
+<header>
 		<h1>Blog</h1>
-		<nav>
+		<nav>	
+		<div id="menuBuscar">
+			<form action="index.php?buscador" method="post">
+				<input type="text" name="buscar" placeholder="buscar...">
+				<input type="submit" name="busqueda" value="buscar"/>
+			</form>
+		</div>
 			<ul>
 				<li><a href="index.php">Inicio</a></li>
+                <li><a href="?login=registro">Registro</a></li>
 				<?php
 				if($_SESSION['user'] -> getName()=="")
 					echo '<li><a href="index.php?login">Login</a></li>';
@@ -34,20 +41,31 @@
     }
     ?>
     <section>
-        <h2>Logeo</h2>
-        <form action="index.php?login" method="post">
-            <input type="text" name="user" placeholder="Usuario"/>
-            <input type="password" name="password" placeholder="Contraseña"/>
-            <input type="submit" name="logeo" value="Entrar"/>
-        </form>
-
-        <h2>Registro</h2>
-        <form action="index.php?login" method="post">
-            <input type="text" name="user" placeholder="Usuario"/>
-            <input type="password" name="password" placeholder="Contraseña"/>
-            <input type="password" name="password2" placeholder="Repite la contraseña"/>
-            <input type="submit" name="registro" value="Registro"/>
-        </form>>
+        <?php
+            switch ($_GET['login']) {
+                case 'registro':
+                    echo '<div class="formularioLogeo">
+                    <h2>Registro</h2>
+                        <form action="index.php?login" method="post">
+                            <input type="text" name="user" placeholder="Usuario"/>
+                            <input type="password" name="password" placeholder="Contraseña"/>
+                            <input type="password" name="password2" placeholder="Repite la contraseña"/>
+                            <input type="submit" name="registro" value="Registro"/>
+                        </form>
+                    </div>';
+                    break;
+                default:
+                    echo '<div class="formularioLogeo">
+                    <h2>Login</h2>
+                        <form action="index.php?login" method="post">
+                            <input type="text" name="user" placeholder="Usuario"/>
+                            <input type="password" name="password" placeholder="Contraseña"/>
+                            <input type="submit" name="logeo" value="Entrar"/>
+                        </form>
+                    </div>';
+                    break;
+            }
+        ?>
     </section>
     </body>
 </html>

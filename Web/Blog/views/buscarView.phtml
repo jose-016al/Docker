@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Añadir</title>
+        <title>Busqueda</title>
         <link rel="stylesheet" href="views/css/style.css">
     </head>
     <body>
@@ -35,20 +35,25 @@
 		</nav>
 	</header>
     <section>
-        <h2>Añadir un articulo</h2>
-        <div id="addArticulo">
-            <form action="index.php?añadir" method="post" enctype="multipart/form-data">
-                <div id="AddArticuloTitle">
-                    <label>Titulo: </label><br>
-                    <input type="text" name="title" placeholder="Titulo"/><br>
-                    <label>Imagen: </label><br>
-                    <input type="file" name="imagen"/><br>
-                </div>
-                <label>Contenido: </label><br>
-                <textarea name="contenido"></textarea><br>
-                <input type="submit" name="añadir" value="Subir articulo"/>
-            </form>
-        </div>
+        <h2>Lista de bsuqueda </h2>
+        <?php
+            foreach ($busqueda as $Articulo) {
+                echo '<p>'.$Articulo->getTitle(). '</p><br>';
+                echo '<p>'.$Articulo->getContenido(). '</p><br>';
+            }
+
+		
+				// PAGINACION
+			echo '<div id="navPaginacion">';
+				for ($i = 1; $i <= $totalPaginasBusqueda; $i++) { 
+					echo "<ul>
+						<li><a href='?buscador=".$_GET['buscador']."&paginaBusqueda=$i'>$i</a></li>
+					</ul>";
+				}
+			echo '</div>';
+        ?>
+
+		
     </section>
-</body>
+    </body>
 </html>

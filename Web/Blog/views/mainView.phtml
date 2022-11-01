@@ -7,11 +7,17 @@
 	<body>
 	<header>
 		<h1>Blog</h1>
-		<nav>
-			<ul>
-				<li><a href="index.php">Inicio</a></li>
-				<?php
-				if($_SESSION['user'] -> getName()=="")
+		<nav>	
+		<div id="menuBuscar">
+			<form action="index.php?buscador" method="post">
+				<input type="text" name="buscar" placeholder="buscar...">
+				<input type="submit" name="busqueda" value="buscar"/>
+			</form>
+		</div>
+		<ul>
+			<li><a href="index.php">Inicio</a></li>
+			<?php
+				if ($_SESSION['user'] -> getName()=="")
 					echo '<li><a href="index.php?login">Login</a></li>';
 				else if ($_SESSION['user'] -> getId_rol() == 1) {
 					echo '<li><a href="index.php?login&logout">Salir</a></li>';
@@ -35,18 +41,35 @@
 			if($Articulo->getImagen()) {
 				echo '<img src="views/images/'.$Articulo->getImagen().'" width="50%"/>';
 			}
-			echo '<div id="fecha"><p> Fecha: '.$Articulo->getFecha().'</p>';
-			echo '<p> Autor: '.$Articulo->getId_user()->getName().'</p>';
+			echo '<div id="fecha">';
+				echo '<p> Fecha: '.$Articulo->getFecha().'</p>';
+				echo '<p> Autor: '.$Articulo->getId_user()->getName().'</p>';
+			echo '</div>';
 
-			// var_dump($Articulo->getComentarios());
-			foreach ($Articulo->getComentarios() as $comentario) {
-				var_dump($comentario);
-				echo '<h2>Comentarios</h2> <br>';
-				echo '<p>'.$comentario->getId_user()->getName().'</p><br>';
-				echo '<p>'.$comentario->getComentario().'</p><br>';
-				echo '<p>'.$comentario->getFecha().'</p><br>';
+			if ($_SESSION['user'] -> getId_rol() == 0) {
+				echo '<div id="navArticulos"><form action="">
+					<a href="?articulo='.$Articulo->getId().'">Ocultar articulo</a>
+				</form></div>';
 			}
-			echo '</div></div>';
+
+			echo '<div id="comentarios">';
+			foreach ($Articulo->getComentarios() as $comentario) {
+				
+				echo '<div id="comentariosUser">';
+					echo '<p>'.$comentario->getId_user()->getName().'</p>';
+				echo '</div>';
+				echo '<div id="comentariosContenido">';
+					echo '<p>'.$comentario->getComentario().'</p>';
+					echo '<p>Fecha: '.$comentario->getFecha().'</p>';
+					if ($_SESSION['user'] -> getId_rol() == 0) {
+						echo '<div id="navArticulos"><form action="">
+							<a href="?comentario='.$comentario->getId().'">Ocultar comentario</a>
+						</form></div>';
+					}
+				echo '</div>';
+			}
+			echo '</div>';
+			echo '</div>';
 			if ($_SESSION['user'] -> getName() != "") {
 				echo '<div id="formComentar"><form action="index.php?comentario&id_articulo='.$Articulo->getId().'" method="post">
 					<label>Comentario: </label><br>
@@ -55,6 +78,15 @@
 				</form></div>';
 			}
 		}
+		echo '</div>';
+
+		echo '<div id="navPaginacion">';
+			// PAGINACION
+			for ($i = 1; $i <= $totalPaginas; $i++) { 
+				echo "<ul>
+					<li><a href='?pagina=$i'>$i</a></li>
+				</ul>";
+			}
 		echo '</div>';
 		?>
 	</section>
