@@ -1,0 +1,90 @@
+@media screen and (max-width:480px) {
+
+        /* HEADER */
+        
+    header {
+        justify-content: center;
+    }
+    header > h1 {
+        display: block;
+        margin: 0 auto;
+        
+    }
+    header > img {
+        display: none;
+    }
+
+        /* NAV */
+
+    nav {
+        justify-content: center;
+        align-items: center;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    nav ul li {
+        padding: 10px;
+    }
+
+        /* SECTION EL TACON DE ORO */
+
+    #el-tacon-de-oro {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #el-tacon-de-oro > img{
+        max-width: 100%;
+    }
+
+        /* SECTION PRODUCTOS */
+
+    #productos {
+        flex-direction: column;
+    }
+
+        /* SECTION LA PIEL */
+
+    #la-piel {
+        flex-direction: column;
+    }
+
+    #la-piel > img {
+        max-width: 100%;
+    }
+
+        /* SECTION TIENDAS */
+
+    #tiendas {
+        flex-direction: column;
+    }
+
+        /* FOOTER */
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #primera ul {
+        text-align: center;
+    }
+
+/* --------------------Pagina de articulos------------------- */
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #articulos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Ejercicio 1</title>
+    </head>
+    <body>
+        <h1>Cambiamos de imagenes en javascript</h1>
+        <img id="imagen" onclick="cambiar()" src="../img/foto1.jpg" width="50%">
+        <p>Haz click sobre la sletras para cambiarlas</p>
+    
+        <script>
+            var i = 1;
+            function cambiar() {
+                var imagen = document.getElementById('imagen');
+                imagen.src = "../img/foto" + (i % 4 + 1) + ".jpg";
+                i++;
+            }
+        </script>
+    </body>
+</html>

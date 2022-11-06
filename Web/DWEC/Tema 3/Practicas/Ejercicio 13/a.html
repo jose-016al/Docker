@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio13JS</title>
+    <script>
+        var parrafo = document.getElementById("resultado");
+        function CambioBase(){
+            let numero = prompt("Introduce un numero:");
+            let base = prompt("Introduce en qué pase está:");
+            let base2 = Math.floor(Math.random() * 37);
+            //let base2=2;
+            let decimal=parseInt(numero,base); //cambia un numero en una base a decimal
+            let solucion=Number(decimal.toString(base2)); //cambia un numero decimal a una base
+            document.getElementById("resultado").innerHTML+=`El número ${numero} pasado en base ${base} es ${decimal} en decimal<br>`
+            document.getElementById("resultado").innerHTML+=`El número ${decimal} pasado a base ${base2} es ${solucion}`;
+            
+        }
+
+        function Decimal(){
+            var numeroB = prompt("introduce un numero binario: ");
+            var final2 = parseInt(numeroB);
+            parrafo += document.write("binario a decimal: "+final2+"<br>");
+        }
+
+        
+    </script>
+</head>
+<body>
+
+    <button type="button" onclick="CambioBase()">Cambiar número</button>
+    <button type="button" onclick="Decimal()">Cambiar decimal</button>
+    <p id="resultado"></p>
+</body>
+</html>
