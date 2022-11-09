@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./views/css/style.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -38,7 +43,7 @@
                     </form>
                 </div>';
                 if (isset($error)) {
-                    echo $error;
+                    echo "<p class='error'>$error</p>";
                 }
             } else {
                 echo '<div class="formularioLogeo">
@@ -50,7 +55,7 @@
                     </form>
                 </div>';
                 if (isset($error)) {
-                    echo $error;
+                    echo "<p class='error'>$error</p>";
                 }
             }
         }

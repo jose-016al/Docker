@@ -24,8 +24,7 @@ CREATE TABLE noticias (
 
 CREATE TABLE votaciones (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    voto_like INT,
-    voto_dislike INT,
+    voto INT,
     id_user INT NOT NULL,
     id_noticia INT NOT NULL,
     FOREIGN KEY (id_user) REFERENCES users(id),
@@ -37,6 +36,6 @@ INSERT INTO users(user, password, id_rol) VALUES ("inma", md5("1234"), 1);
 INSERT INTO users(user, password, id_rol) VALUES ("alberto", md5("1234"), 1);
 INSERT INTO users(user, password, id_rol) VALUES ("daulin", md5("1234"), 1);
 
-INSERT INTO noticias(title, url, mostrar, id_user) VALUES ("titulo", "https://www.google.com/", 1, 1);
-INSERT INTO noticias(title, url, mostrar, id_user) VALUES ("Primera noticia", "https://www.google.com/", 1, 2);
-INSERT INTO noticias(title, url, mostrar, id_user) VALUES ("Segunda noticia", "https://www.google.com/", 1, 3);
+INSERT INTO noticias(title, url, mostrar, id_user, getLikes, getDislikes) VALUES ("titulo", "https://www.google.com/", 1, 1, 0, 0);
+INSERT INTO noticias(title, url, mostrar, id_user, getLikes, getDislikes) VALUES ("Primera noticia", "https://www.google.com/", 1, 2, 0, 0);
+INSERT INTO noticias(title, url, mostrar, id_user, getLikes, getDislikes) VALUES ("Segunda noticia", "https://www.google.com/", 1, 3, 0, 0);

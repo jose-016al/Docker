@@ -13,13 +13,17 @@ if (isset($_POST['logeo'])) {
 }
 
 if (isset($_POST['registro'])) {
-    if (empty($_POST['user']) && empty($_POST['password']) && empty($_POST['password2'])) {
+    if (empty($_POST['user']) || empty($_POST['password']) || empty($_POST['password2'])) {
         $error = "Error, Has dejado algun campo vacio";
-    } else if ($_POST['password'] == $_POST['password2']) {
-        UserRepository::registro($_POST['user'], $_POST['password']);
-        header("location:index.php");
+    } else if (userRepository::comprobarUsuarioDuplicado($_POST['user']) == 0) {
+        if ($_POST['password'] == $_POST['password2']) {
+            UserRepository::registro($_POST['user'], $_POST['password']);
+            header("location:index.php");
+        } else {
+            $error = "Las contraseñas no coinciden";
+        }
     } else {
-        $error = "Las contraseñas no coinciden";
+        $error = "El nombre de usuario ya esta registrado";
     }
 }
 

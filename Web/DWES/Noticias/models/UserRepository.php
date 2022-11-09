@@ -10,6 +10,12 @@ class userRepository {
         }
     }
 
+    public static function comprobarUsuarioDuplicado($user) {
+        $db = Conectar::conexion();
+        $result = $db -> query("SELECT user FROM users WHERE user = '$user';");
+        return $result -> num_rows;
+    }
+
     public static function registro($user, $password) {
         $db = Conectar::conexion();
         $result = $db -> query("INSERT INTO users(user, password, id_rol) VALUES ('$user', md5('$password'), 1)");

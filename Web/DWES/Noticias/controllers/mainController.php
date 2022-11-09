@@ -40,6 +40,7 @@ if (isset($_GET['idNoticia'])) {
 
     // Controlador para las votaciones
 if (isset($_GET['idNoticiaVotar'])) {
+        // getVotoUsuario devuelve 0 si el usuario no ha votado
     if (VotacionRepository::getVotoUsuario($_SESSION['user']->getId(),$_GET['idNoticiaVotar']) == 0) {
         if (isset($_GET['like']) == 1) {    
             VotacionRepository::votarLike($_SESSION['user']->getId(),$_GET['idNoticiaVotar']);
@@ -49,7 +50,15 @@ if (isset($_GET['idNoticiaVotar'])) {
             header("location:index.php");
         }
     } else {
-        $prueba = "Ya has votado";
+        if (isset($_GET['like']) != 1 && VotacionRepository::comprobarVoto($_SESSION['user']->getId(), $_GET['idNoticiaVotar']) == 1) {
+            VotacionRepository::modificarLike($_SESSION['user']->getId(), $_GET['idNoticiaVotar']);
+            header("location:index.php");
+        } else if (isset($_GET['dislike']) == 0 && VotacionRepository::comprobarVoto($_SESSION['user']->getId(), $_GET['idNoticiaVotar']) == 0) {
+            VotacionRepository::modificarDislike($_SESSION['user']->getId(), $_GET['idNoticiaVotar']);
+            header("location:index.php");
+        } else {
+            $error = 'Ya has votado';
+        }
     }
 }
 
