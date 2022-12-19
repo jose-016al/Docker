@@ -1,0 +1,6 @@
+ol li:first-child {
+    background-color: green;
+}
+ol li:last-child {
+    background-color: red;
+}

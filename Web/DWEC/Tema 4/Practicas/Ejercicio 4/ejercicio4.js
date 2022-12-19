@@ -7,15 +7,24 @@ function generarPrimerArray() {
 function generarSegundoArray() {
     let cadena = document.forms[0].valores2.value;
     b = cadena.split(',');
-    if (b.length != a.length) {
-        alert("Debe ser del mismo tamaño");    
-    }
 }
 
-function aleatorio() {
+function aleatorio1() {
+    let total = document.forms[0].select1.options[select1.selectedIndex].text;
     let aleatorio;
-    for (let i in a) {
-        aleatorio = Math.floor((Math.random() * (100 - 0)) + 0);
+    for (let i = 1; i <= total; i++) {
+        aleatorio = Math.floor((Math.random() * (100 - 0)) + 0);  
+        a.push(aleatorio);
+    }
+    let cadena = a.toString();
+    a = cadena.split(',');
+}
+
+function aleatorio2() {
+    let total = document.forms[0].select2.options[select2.selectedIndex].text;
+    let aleatorio;
+    for (let i = 1; i <= total; i++) {
+        aleatorio = Math.floor((Math.random() * (100 - 0)) + 0);  
         b.push(aleatorio);
     }
     let cadena = b.toString();
@@ -23,9 +32,23 @@ function aleatorio() {
 }
 
 function concatenar() {
+    let total;
+    if (a.length > b.length) {
+        total = a.length
+    } else {
+        total = b.length
+    }
+    
     var concatenados = [];
-    for (let i = 0; i < a.length; i++) {
-        concatenados.push(a[i] + i) + concatenados.push(b[i] + i);
+    for (let i = 0; i < total; i++) {
+        if (a[i] != null && b[i] != null) {
+            concatenados.push(a[i]) + concatenados.push(b[i]);
+        } else if (a.length > b.length) {
+            concatenados.push(a[i]);
+        } else {
+            concatenados.push(b[i]);
+        }
+        concatenados[i];
     }
     let p = document.getElementById("resultado");
     p.innerHTML = "<h2>"+concatenados+"</h2";

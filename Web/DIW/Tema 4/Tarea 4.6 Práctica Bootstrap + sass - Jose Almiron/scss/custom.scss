@@ -1,0 +1,84 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+    // Nuestro codigo adicional
+$background-color: #F0E5E5;
+$font-color: black;
+$color-primary: #E8B07E;
+$color-secundary: #8B5236;
+$title: 'Dancing Script', sans-serif;
+
+    // Estilos sobre el header
+header {
+    background-color: $color-primary;
+}
+header h1 {
+    font-family: $title;
+    font-size: 50px;
+    font-weight: bold;
+}
+    // Estilos sobre el menu principal
+nav {
+    background-color: $color-primary;
+    padding: 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    color: $font-color;
+}
+nav ul li a:hover {
+    color: $font-color;
+    border-bottom: solid 3px $color-secundary;
+}
+
+    // posiciona el header en la posicion 0 de top
+.posicion {
+    top: 0px;
+}
+
+    // Estilos sobre el body de la web 
+main > section {
+    padding: 10px;
+    border-bottom: solid 1px black;
+}
+
+    // elimina el ultimo borde del section
+section:last-child {
+    border-bottom: none;
+}
+
+    // Estilos sobre los productos en la pagina principal
+$width-img-products: 30%;
+.productos article p {
+    text-align: justify;
+}
+.productos article  img {
+    display: block;
+    margin: 0 auto;
+    width: $width-img-products;
+}
+
+    //Estilos sobre el footer 
+footer {
+    background-color: $color-primary;
+}
+
+    // Estilos sobre la pagina de compra online----------
+aside > a {
+    color: $font-color;
+    text-decoration: none;
+    padding: 10px;
+}
+aside > a:hover {
+    color: $font-color;
+    border-left: solid 5px $color-secundary;
+}
+.articulos article img {
+    width: $width-img-products;
+}

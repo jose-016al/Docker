@@ -1,0 +1,15 @@
+table {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 250px;
+}
+table {
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+td {
+    border: solid 1px black;
+}
+td:nth-child(3n + 2) {
+    background-color: red;
+}

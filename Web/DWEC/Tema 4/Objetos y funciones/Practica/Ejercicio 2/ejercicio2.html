@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            function Calcula (numero=1){
+            let calculo=numero*numero;
+                document.write(`<p>Resultado = ${calculo}`);
+            }
+        </script>
+        <title>Ejercicio de Calculo</title>
+    </head>
+    <body>
+        <input type="button" onclick="Calcula()" value="Calculo">
+        <input type="button" onclick="Calcula(5)" value="Otro Calculo">
+        <p>Cuando no se pasa ningun numero por parametro a la funcion calculo su valor es 1 y se multiplican enre ellos</p>
+        <p>Pasando un valor a la funcion como un 5 se multiplica 5*5 dando como resultado 25</p>
+    </body>
+</html>

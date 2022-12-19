@@ -1,0 +1,37 @@
+@media screen and (max-width:780px) {
+
+        /* MENU */
+
+    nav {
+        align-items: flex-end;
+        flex-direction: column-reverse;
+    }
+    nav form {
+        margin-top: 10px;
+    }
+
+        /* SECTION EL TACON DE ORO */
+
+    #el-tacon-de-oro > img {
+        max-width: 50%;
+    }
+
+        /* SECTION PRODUCTOS */
+
+    #productos > article img {
+        max-width: 80%;
+    }
+
+        /* SECTION LA PIEL */
+
+    #la-piel img {
+        max-width: 50%;
+    }
+
+        /* --------------------Pagina de articulos------------------- */
+
+    #articulos > article img {
+        max-width: 80%;
+    }
+
+}
