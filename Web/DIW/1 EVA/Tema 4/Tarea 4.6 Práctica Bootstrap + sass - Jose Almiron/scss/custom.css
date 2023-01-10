@@ -1,10 +1,11 @@
 @charset "UTF-8";
 /*!
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
+ * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -5886,6 +5887,7 @@ textarea.form-control-lg {
   display: block;
 }
 
+/* rtl:begin:ignore */
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
   transform: translateX(100%);
@@ -5896,6 +5898,7 @@ textarea.form-control-lg {
   transform: translateX(-100%);
 }
 
+/* rtl:end:ignore */
 .carousel-fade .carousel-item {
   opacity: 0;
   transition-property: opacity;
@@ -10933,8 +10936,71 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-nav ul li a {
+header {
+  background-color: #E8B07E;
+}
+
+header h1, header .h1 {
+  font-family: "Dancing Script", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+nav {
+  background-color: #E8B07E;
   padding: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+nav ul li a:hover {
+  color: black;
+  border-bottom: solid 3px #8B5236;
+}
+
+.posicion {
+  top: 0px;
+}
+
+main > section {
+  padding: 10px;
+  border-bottom: solid 1px black;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+.productos article p {
+  text-align: justify;
+}
+
+.productos article img {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+
+footer {
+  background-color: #E8B07E;
+}
+
+aside > a {
   color: black;
   text-decoration: none;
+  padding: 10px;
+}
+
+aside > a:hover {
+  color: black;
+  border-left: solid 5px #8B5236;
+}
+
+.articulos article img {
+  width: 30%;
 }/*# sourceMappingURL=custom.css.map */
