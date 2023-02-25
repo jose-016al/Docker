@@ -1,0 +1,38 @@
+@media screen and (max-width:350px) {
+
+        /* ----------Header---------- */
+    header > #logo {
+        display: none;
+    }
+    header > #examen h1 {
+        text-align: center;
+    }
+
+        /* ----------NAV---------- */
+    nav {
+        justify-content: center;
+        height: 170px;
+    }
+    nav > ul {
+        flex-direction: column;   
+    }
+
+        /* ----------Panel lateral (aside)---------- */
+    aside {
+        grid-column: 1/4;
+        background-image: url("img/fondo_cabecera.jpg");
+        height: 100px;
+    }
+
+        /* ----------Contenido--------- */
+    #contenido {
+        grid-column: 1/4;
+    }
+
+        /* ----------Footer---------- */
+    footer {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+}

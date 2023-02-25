@@ -1,0 +1,144 @@
+/* EJERCICIO EXAMEN ANIMACIÓN: PAISAJE */
+/*
+ Dado el paisaje de index.html realizar las siguientes animaciones en el orden indicado:
+* 1. El pájaro vuela y se posa sobre el árbol (dura 5 segundos desde esquina superior derecha)
+* 2. En el segundo 4 aparece una nube que se colocará delante del sol (duración de la animación: 5 segundos)
+* 3. Cuando la nube empieza a posarse sobre el sol este empieza a disminuir su tamaño 
+* 4. El pájaro empieza a marcharse (movimiento libre)
+* 5. El cielo se oscurece
+* Durante todo el ejercicio el sol debe brillar para lo cual puedes usar una animación usando el efecto box-shadow
+* 
+Realiza las animaciones necesarias y cualquier cambio que creas conveniente en este css proporcionado.
+*/
+
+.scene {
+  margin: 0 auto;
+  position: relative;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #00bfff, #b9deec);
+}
+
+.sun {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fffacd;
+}
+
+
+.clouds {
+  position: absolute;
+  top: 1%;
+  width: 100%;
+  height: 300px;
+  background: url(nube.png) no-repeat;
+  background-size: contain;
+  background-position: -260%;
+}
+
+.mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: url(mountains.png) repeat-x;
+  background-size: contain;
+}
+
+.trees {
+  position: absolute;
+  bottom: 30px;
+  left: 30%;
+  width: 100%;
+  height: 300px;
+  background: url(trees.png) no-repeat;
+}
+
+.birds {
+  position: absolute;
+  left: 820px;
+  top: 0%;
+  width: 100%;
+  height: 300px;
+  background: url(birds.png) no-repeat;
+  visibility: visible;
+}
+
+/* 1. El pájaro vuela y se posa sobre el árbol (dura 5 segundos desde esquina superior derecha) */
+.birds {
+  animation: pajaro 5s linear, 5s pajaro-out 9s linear;
+  animation-fill-mode: both; /* Con esta propiedad especificamos que una vez finalice la animacion se qude en esa posicion*/
+}
+@keyframes pajaro {
+  to {top: 50%; left: 15%;}
+}
+
+/* 2. En el segundo 4 aparece una nube que se colocará delante del sol (duración de la animación: 5 segundos) */
+.clouds {
+  animation-name: nube;
+  animation-duration: 5s;
+  animation-delay: 4s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes nube {
+  from {
+    background-position: 350%;
+  }
+  to {
+    background-position: 50%;
+  }
+}
+
+/* 3. Cuando la nube empieza a posarse sobre el sol este empieza a disminuir su tamaño (efecto se hace de
+noche) y se oscurece el cielo. */
+.sun {
+  animation: sol 5s linear 4s,sol-brilla linear;
+  animation-fill-mode: forwards;
+}
+.sky {
+  animation-name: cielo;
+  animation-duration: 4s;
+  animation-delay: 4s;
+  animation-timing-function: cubic-bezier();
+  animation-fill-mode: forwards;
+}
+@keyframes sol {
+  to {
+    width: 40px;
+    height: 40px;
+  }
+}
+@keyframes cielo {
+  0% {background: linear-gradient(180deg, #00bfff, #b9deec);}
+  30% {background: linear-gradient(180deg, #086c8e, #b9deec);}
+  60% {background: linear-gradient(180deg, #003f54, #b9deec);}
+  100% {background: linear-gradient(180deg, #001452, #b9deec);}
+}
+
+/* 4. El pájaro empieza a marcharse (movimiento libre) */
+@keyframes pajaro-out {
+  to {top: 0%; left: -826px;}
+}
+
+/* 5. Durante todo el ejercicio el sol debe brillar para lo cual puedes usar una animación usando 
+el efecto boxshadow */
+@keyframes sol-brilla {
+  to {
+    box-shadow: 0 0 20px 10px yellow;
+  }
+}

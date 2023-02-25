@@ -1,0 +1,217 @@
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+    // Variables
+
+    // Estilos generales
+body {
+    background-color: #ff9d00;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='100' stroke-opacity='0.05' %3E%3Ccircle fill='%23ff9d00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fb8d17' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23f47d24' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23ed6e2d' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23e35f34' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23d85239' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23cc453e' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23be3941' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b02f43' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23a02644' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23901e44' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23801843' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%236f1341' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%235e0f3d' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%234e0c38' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%233e0933' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%232e062c' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23210024' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    animation: fondo 5s infinite;
+}
+
+@keyframes fondo {
+    0% {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%23ff9d00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fb8d17' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23f47d24' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23ed6e2d' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23e35f34' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23d85239' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23cc453e' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23be3941' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b02f43' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23a02644' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23901e44' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23801843' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%236f1341' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%235e0f3d' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%234e0c38' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%233e0933' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%232e062c' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23210024' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");}    
+    100% {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='0' stroke-opacity='0.05' %3E%3Ccircle fill='%23ff9d00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fb8d17' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23f47d24' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23ed6e2d' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23e35f34' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23d85239' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23cc453e' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23be3941' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b02f43' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23a02644' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23901e44' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23801843' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%236f1341' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%235e0f3d' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%234e0c38' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%233e0933' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%232e062c' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23210024' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");}
+}
+
+.container > h1 {
+    color: white;
+    text-shadow: 4px 4px 5px #cccc;
+    margin-top: 20px;
+}
+
+    // ----------Estilos de player y de los controles----------
+#player-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#player-container > #player {
+    height: 445px;
+    border-radius: 20px;
+    background-color: black;
+}
+
+    // Estilos para los controles de player
+#player-container > #controles-container {
+    position: absolute;
+    top: 400px;
+    width: 92%;
+    background-color: rgba(0, 0, 0, 0.70);
+    padding: 0px 10px 5px 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#player-container > #sinSubtitulos {
+    font-size: 20px;
+    padding: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.50);
+    position: absolute;
+}
+
+#player-container > #controles-container #barras #barraProgresoVacia {
+    height: 4px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.40);
+    transition: width 0.1s ease-in-out;
+}
+
+#player-container > #controles-container #barras #barraProgreso {
+    position: absolute;
+    top: 0px;
+    height: 4px;
+    width: 0%;
+    background-color: red;
+    transition: width 0.1s ease-in-out;
+}  
+
+#player-container > #controles-container #controles  {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 2px 5px;
+}
+
+#player-container > #controles-container #controles button {
+    background-color: rgba(255, 255, 255, 0.0);
+    border: none;
+    border-radius: 20px;
+}
+
+#player-container > #controles-container #controles button:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+    border-radius: 20px;
+}
+
+#player-container > #controles-container #controles label {
+    padding: 2px 5px 2px 5px;
+}
+
+#player-container > #controles-container #controles #volumen {
+    margin-top: 3px;
+    margin-right: 7px;
+    display: none;
+}
+
+#player-container > #controles-container #controles #time {
+    color: white;
+    margin: 0;
+    padding: 2px 3px 0px 0px;
+}
+#player-container > #controles-container #controles #separacion {
+    color: white;
+    margin: 0;
+}
+
+#player-container > #controles-container #controles #duracion {
+    color: white;
+    margin: 0;
+    padding: 2px 0px 0px 3px;
+}
+
+    // ----------Estilos de la lista de reproduccion----------
+#lista-container {
+    background-color: rgba(255, 255, 255, 0.20);
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+    margin: 0px;
+    height: 450px;
+}
+
+#formSeleccion {
+    position: relative;
+}
+
+#formSeleccion > p {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+#inputSeleccion {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    right: 0px;
+    bottom: 0px;
+    width: 50%;
+    opacity: 0;
+}
+
+#saveList  {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+#deleteAll {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    background-color: #E77373;
+    display: none;
+}
+
+#lista-container > #lista-reproduccion ol {
+    margin-top: 20px;
+    height: 290px;
+    overflow: auto;
+}
+
+#lista-container > #lista-reproduccion ol li {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#lista-container > #lista-reproduccion ol li p {
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.20);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#lista-container > #lista-reproduccion ol li p:hover, #saveList:hover, #formSeleccion > p:hover {
+    background-color: rgba(255, 255, 255, 0.40);
+}
+
+#lista-container > #lista-reproduccion ol li p.escuchando {
+    background-color: rgba(255, 255, 255, 0.40);
+}
+
+#lista-container > #lista-reproduccion #boton_delete {
+    padding: 5px;
+    border: none;
+    background-color: #E77373;
+    color: white;
+    font-weight: bold;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#lista-container > #lista-reproduccion #boton_delete:hover, #deleteAll:hover {
+    color: white;
+    cursor: pointer;
+    background-color: red;
+}
+

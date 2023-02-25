@@ -1,0 +1,62 @@
+body {
+    margin: 0px;
+}
+
+#container{      
+    background: #666 url(daulintree.jpg) no-repeat;
+    width: 420px;
+    height: 480px;    
+    position: relative;   
+ }
+
+@keyframes nieve{
+    from {top: -2px;}
+    to {top: 480px;}
+ }
+       
+@keyframes copos{
+     0% { transform: rotate(-180deg) translate(0px, 0px);}
+     100% { transform: rotate(180deg) translate(10px, 75px);}
+ }
+
+ @keyframes desaparecer{
+   0% { opacity: 100%;}
+   20% { opacity: 85%;}
+   40% { opacity: 70%;}
+   60% { opacity: 60%;}
+   80% { opacity: 55%;}
+   100% { opacity: 40%;}
+}
+
+
+#snow div {
+    position: absolute;
+    top: -20px;
+    animation-name: nieve, copos, desaparecer;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+ }
+ .snowflake {
+    color: #fff;
+    font-size: 1em;
+    position: absolute;   
+ }
+ .snowflake.f1 {
+    left: 40px;
+    animation-duration: 5s;   
+ }
+ .snowflake.f2 {
+    font-size: 1.8em;
+    left: 120px;
+    animation-duration: 7s;   
+ }
+ .snowflake.f3 {
+    left: 200px;
+    animation-duration: 8s;   
+ }
+ .snowflake.f4 {
+    font-size: 1.5em;
+    left: 280px;
+    animation-duration: 6s;   
+ }

@@ -7,15 +7,12 @@ elemento.addEventListener('blur', resalta, false);
 
 function resalta(e){
 	switch(e.type){
-
-	case 'mouseover':
-		e.target.style.borderColor = "green";
-	break;
-	case 'blur':
-		e.target.style.borderColor = "gray";
-	break;
-
-	default:
-	break;
+		case 'mouseover':
+			e.target.style.borderColor = "green";
+			break;
+		case 'blur':
+			e.target.style.borderColor = "gray";
+			break;
+		break;
     }
 }

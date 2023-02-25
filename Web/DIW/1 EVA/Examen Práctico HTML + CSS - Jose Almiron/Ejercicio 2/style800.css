@@ -1,0 +1,19 @@
+@media screen and (max-width:800px) {
+
+        /* ----------Header---------- */
+    header > #logo img {
+        width: 30%;
+    }
+
+        /* ----------Panel lateral (aside)---------- */
+    aside {
+        grid-column: 1/4;
+        background-image: url("img/fondo_cabecera.jpg");
+        height: 100px;
+    }
+
+        /* ----------Contenido--------- */
+    #contenido {
+        grid-column: 1/4;
+    }
+}
