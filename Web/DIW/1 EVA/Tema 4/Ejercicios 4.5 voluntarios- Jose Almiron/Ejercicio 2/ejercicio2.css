@@ -1,6 +1,0 @@
-section p:first-child {
-    border-top: solid 1px black;
-}
-section p:last-child {
-    border-bottom: solid 1px black;
-}
