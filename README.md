@@ -15,7 +15,7 @@
 # Instalacion de Docker en Arch Llnux
 Habilitamos el modulo loop
 ```bash
-tee /etc/modules-load.d/loop.conf <<< "loop"
+sudo tee /etc/modules-load.d/loop.conf <<< "loop"
 ```
 ```bash
 modprobe loop
@@ -125,7 +125,7 @@ docker push jose016al/ubuntu
 # Contenedor SSH
 Lanzamos un contenedor de ubuntu, con el puerto 22 para poder comunicarnos 
 ```bash
-docker run --name server -it-p 2222:22 ubuntu
+docker run --name server -it -p 2222:22 ubuntu
 ```
 Actualizamos el contenedor 
 ```bash
