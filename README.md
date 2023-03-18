@@ -11,6 +11,8 @@
 - [Contenedor SSH](#contenedor-ssh)
 - [Contenedor Apache](#contenedor-apache)
 - [Contenedor Mariadb](#contenedor-mariadb)
+- [Contenedor React](#contenedor-react)
+- [Contenedor Symfony](#contenedor-symfony)
  
 # Instalacion de Docker en Arch Llnux
 Habilitamos el modulo loop
@@ -252,4 +254,67 @@ nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 ```
 # bind-address = 127.0.0.1  
+```
+
+# Contenedor React
+Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80, 3306 y 3000
+```bash
+docker run --name server -it -v ~/github:/var/www/html -p 2222:22 -p 8080:80 -p 3306:3306 -p 3000:3000 jose016al/react
+```
+Actualizar el contenedor
+```bash
+apt update
+```
+```bash
+apt upgrade
+```
+Instalacion de los paquetes necesarios
+```bash
+apt install nodejs npm
+```
+Es posible que en algunos proyectos sea necesario instalar reaact-scripts
+```bash
+npm install react-scripts --save
+```
+
+# Contenedor Symfony
+Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80, 3306 y 3000
+```bash
+docker run --name server -it -v ~/github:/var/www/html -p 2222:22 -p 8080:80 -p 3306:3306 -p 3000:3000 -p 8000:8000 jose016al/symfony
+```
+Actualizar el contenedor
+```bash
+apt update
+```
+```bash
+apt upgrade
+```
+Instalacion de los paquetes necesarios
+```bash
+apt install libapache2-mod-php php-common php-sqlite3 php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-soap php-ldap php-gd php-bcmath php-xml php-cli php-zip curl git
+```
+Descargamos el paquete de composer de la web
+```bash
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir-/usr/local/bin -- filename-composer
+```
+Instalamos composer
+```bash
+apt install composer
+```
+```bash
+curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+```
+```bash
+apt install -y symfony-cli
+```
+Si queremos inicar un proyecto ya creado, debemos seguir los pasos
+```bash
+composer install
+```
+Crear la base de datos una vez hayamos modificado el fichero .env con nuestras credenciales
+```bash
+php bin/console doctrine:database:create
+```
+```bash
+php bin/console doctrine:schema:create
 ```
