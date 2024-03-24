@@ -11,8 +11,16 @@
 - [Contenedor SSH](#contenedor-ssh)
 - [Contenedor Apache](#contenedor-apache)
 - [Contenedor Mariadb](#contenedor-mariadb)
-- [Contenedor React](#contenedor-react)
+- [Contenedor Nodejs & NPM](#contenedor-nodejs--npm)
 - [Contenedor Symfony](#contenedor-symfony)
+
+Para simplificar y agilizar el inicio de contenedores, es útil contar con un script que automatice esta tarea, ofreciendo comodidad y eficiencia
+```bash
+#!/bin/bash
+sudo systemctl start docker
+docker start server
+docker exec -u user -it server /bin/bash
+```
  
 # Instalacion de Docker en Arch Llnux
 Habilitamos el modulo loop
@@ -151,15 +159,18 @@ apt install nano
 ```
 Creacion de un usuario
 ```bash
-useradd -m jose
+useradd -m user
 ```
 ```bash
-passwd jose
+passwd user
 ```
 ```bash
-usermod -aG sudo jose
+usermod -aG sudo user
 ```
-Reiniar el servicio ssh
+```bash
+chsh -s /bin/bash user
+```
+Reiniciar el servicio ssh
 ```bash
 service ssh restart
 ```
@@ -167,7 +178,7 @@ service ssh restart
 # Contenedor Apache
 Partimos del contenedor anterior, esta vez con persistencia y abriendo los puertos 22 y 80
 ```bash
-docker run --name server -it -v ~/github/Docker/Web:/var/www/html -p 2222:22 -p 8080:80 jose016al/ssh
+docker run --name server -it -v ~/GitHub:/var/www/html -p 2222:22 -p 8080:80 jose016al/ssh
 ```
 Actualizar el contenedor 
 ```bash
@@ -193,9 +204,8 @@ service apache2 restart
 
 # Contenedor Mariadb
 Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80 y 3306  
-_(Hay que tener en cuenta que mysql entre en conflicto se hacemos la persistencia en un repositorio o en onedrive)_
 ```bash
-docker run --name server -it -v ~/github/Docker/Web:/var/www/html -v ~/.BD:/var/lib/mysql -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache
+docker run --name server -it -v ~/GitHub:/var/www/html -p 2222:22 -p 8080:80 -p 3306:3306 jose016al/apache
 ```
 Actualizar el contenedor
 ```bash
@@ -232,14 +242,14 @@ service mariadb restart
 ```
 Creamos un usuario admin y uno remoto
 ```bash
-GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY '211099' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
 ```
 ```bash
 FLUSH PRIVILEGES;
 ```
 Creamos el usuario remoto
 ```bash
-GRANT ALL ON *.* TO 'jose'@'%' IDENTIFIED BY '211099' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'user'@'%' IDENTIFIED BY 'user' WITH GRANT OPTION;
 ```
 ```bash
 FLUSH PRIVILEGES;
@@ -252,14 +262,23 @@ Modificamos el fichero de configuracion de mysql para permitir aceso al usuario 
 ```
 nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
-```
+```bash
 # bind-address = 127.0.0.1  
 ```
+Para habilitar el registro de errores de PHP, debemos modificar el archivo php.ini
+```bash
+sudo nano /etc/php/8.1/apache2/php.ini
+```
+Usando 'Ctrl + W', buscamos estas opciones que están desactivadas (off) y las activamos (on)
+```bash
+display_errors = On
+display_startup_errors = On
+```
 
-# Contenedor React
+# Contenedor Nodejs & NPM
 Partimos del contenedor anterior, con persistencia y abriendo los puertos 22, 80, 3306 y 3000
 ```bash
-docker run --name server -it -v ~/github:/var/www/html -p 2222:22 -p 8080:80 -p 3306:3306 -p 3000:3000 jose016al/react
+docker run --name server -it -v ~/GitHub:/var/www/html -p 2222:22  -p 3000:3000 -p 5173:5173 jose016al/ssh
 ```
 Actualizar el contenedor
 ```bash
@@ -271,6 +290,14 @@ apt upgrade
 Instalacion de los paquetes necesarios
 ```bash
 apt install nodejs npm
+```
+Si las versiones más recientes de Node.js no están disponibles a través de apt, podemos optar por instalar un gestor de versiones de Node.js, como Node Version Manager (NVM)
+```bash
+npm install -g n
+```
+Una vez que tengamos el gestor instalado, podremos actualizar Node.js a su última versión con el siguiente comando
+```bash
+sudo n latest
 ```
 Es posible que en algunos proyectos sea necesario instalar reaact-scripts
 ```bash
